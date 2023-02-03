@@ -99,3 +99,16 @@ Help us translate on https://crowdin.com/project/crater-invoice
 
 Crater is released under the GNU AFFERO GENERAL PUBLIC LICENSE Version 3.
 See [LICENSE](LICENSE) for details.
+
+
+
+# Build
+docker build -t upmotos .
+
+# Build image
+heroku container:push upmotos -a upmotos
+
+# Release image
+heroku container:release upmotos -a upmotos
+
+heroku stack:set container --app upmotos-docker
