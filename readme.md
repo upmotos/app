@@ -111,4 +111,4 @@ heroku container:push upmotos -a upmotos
 # Release image
 heroku container:release upmotos -a upmotos
 
-heroku stack:set container --app upmotos-docker
+heroku stack:set container --app upmotos
