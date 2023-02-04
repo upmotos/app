@@ -28,7 +28,7 @@ RUN pecl install imagick \
 RUN docker-php-ext-install bcmath
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath gd
+RUN apt-get install php8-gmp
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
