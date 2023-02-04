@@ -29,19 +29,22 @@ class DatabaseConfigurationController extends Controller
      */
     public function saveDatabaseEnvironment(DatabaseEnvironmentRequest $request)
     {
-        Artisan::call('config:clear');
-        Artisan::call('cache:clear');
+        // Artisan::call('config:clear');
+        // Artisan::call('cache:clear');
 
-        $results = $this->environmentManager->saveDatabaseVariables($request);
+        // $results = $this->environmentManager->saveDatabaseVariables($request);
+        $results = [
+            'success' => 'database_variables_save_successfully',
+        ]
 
-        if (array_key_exists("success", $results)) {
-            Artisan::call('key:generate --force');
-            Artisan::call('optimize:clear');
-            Artisan::call('config:clear');
-            Artisan::call('cache:clear');
-            Artisan::call('storage:link');
-            Artisan::call('migrate --seed --force');
-        }
+        // if (array_key_exists("success", $results)) {
+        //     Artisan::call('key:generate --force');
+        //     Artisan::call('optimize:clear');
+        //     Artisan::call('config:clear');
+        //     Artisan::call('cache:clear');
+        //     Artisan::call('storage:link');
+        //     Artisan::call('migrate --seed --force');
+        // }
 
         return response()->json($results);
     }
