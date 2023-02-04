@@ -1,5 +1,7 @@
 FROM php:8.1-fpm
 
+USER root
+
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
@@ -12,14 +14,18 @@ RUN apt-get update && apt-get install -y \
     libzip-dev \
     libmagickwand-dev \
     mariadb-client \
-    npm \
-    gmp-dev
+    npm
+
+# Install PHP extensions
+RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath gd
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 RUN pecl install imagick \
     && docker-php-ext-enable imagick
+
+RUN docker-php-ext-install bcmath
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring zip exif pcntl bcmath gd
