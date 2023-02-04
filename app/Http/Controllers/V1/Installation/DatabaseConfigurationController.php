@@ -35,7 +35,7 @@ class DatabaseConfigurationController extends Controller
         // $results = $this->environmentManager->saveDatabaseVariables($request);
         $results = [
             'success' => 'database_variables_save_successfully',
-        ]
+        ];
 
         // if (array_key_exists("success", $results)) {
         //     Artisan::call('key:generate --force');
