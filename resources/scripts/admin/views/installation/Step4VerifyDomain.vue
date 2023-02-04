@@ -97,6 +97,8 @@ async function verifyDomain() {
 
     isSaving.value = false
   } catch (e) {
+    console.log(e)
+    
     notificationStore.showNotification({
       type: 'error',
       message: t('wizard.verify_domain.failed'),
